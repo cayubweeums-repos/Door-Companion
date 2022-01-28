@@ -1,12 +1,20 @@
 import datetime
 from time import sleep
+import multiprocessing
+from speech.engine import SpeechEngine
 
 
 def main():
-    while True:
-        now = datetime.datetime.now()
-        print("Hello World, the current time is:\n\t\t\t{}:{}.{}".format(now.hour, now.minute, now.second))
-        sleep(1)
+    try:
+        print('~~~~~ Loading ~~~~~')
+        _speechEngine = SpeechEngine()
+        _speechEngine.run()
+        while True:
+            print('~~~~~ Running ~~~~~')
+            sleep(1)
+    except KeyboardInterrupt:
+        print('~~~~~ Stopping ~~~~~')
+        print('~~~~~ Done ~~~~~')
 
 
 main()
